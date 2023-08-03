@@ -44,37 +44,49 @@ int	ft_atoi(const char *nptr)
 	return (signal * number);
 }
 /*--------------------------------------------------------------*/
-void    convert_binary(unsigned char character)
+void    convert_binary(int pid, unsigned char character)
 {
     unsigned char binary_pos;
-    //DONE! 2) Convert my message into binary
+    //DONE! 4) Convert my message into binary and the signal (SIGUSR1 = 1, SIGUSR2 = 0)
     binary_pos = 128;
     while(binary_pos)
     {
         if (binary_pos & character)
-            write(1, "1", 1);
+            kill(pid, SIGUSR1);
         else
-            write(1, "0", 1);
+            kill(pid, SIGUSR2);
         binary_pos >>= 1;
     }
-    write(1, "\n", 1);
 }
 void    send_msg(int pid, char *msg)
 {    
-    printf("PID: %d", pid);
+    printf("PID: %d\n", pid);
     while(*msg)
     {
-        convert_binary(*msg);
+        convert_binary(pid, *msg);
+        usleep(500);
         msg++;
     }
 }
 int main(int argc, char **argv)
 {
+    int i;
+
+    i = 0;
+    //DONE! 1) Verify if is there only two arguments (PID and message).
     if (argc != 3)
-        exit(write(1, "Error: Message invalid!", 23)); //DONE! 1) Before send the PID to the send_msg I need to convert it into a int.  
+        exit(write(1, "Error: Message invalid!", 23)); 
+    //DONE! 2) Verify if the PID informed is a valid numeric value, before modifying it to int.
+    while (argv[1][i]!= '\0')
+    {
+        if (argv[1][i] < '0' || argv[1][i] > '9')
+            exit(write(1, "ERROR: PID invalid!\n", 20));
+        i++;
+    }
+    //DONE! 3) Convert the PID from char * to int, then convert the message into binary.
     send_msg(ft_atoi(argv[1]), argv[2]);
     
-    //define the signal handler
-    //send the right signal as the binary sent.
+    if (argv[1][i] == '\0')
+        write(1, "Message sent!\n", 14);
     return (0);
 }
