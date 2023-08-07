@@ -52,19 +52,26 @@ void    convert_binary(int pid, unsigned char character)
     while(binary_pos)
     {
         if (binary_pos & character)
+        {
             kill(pid, SIGUSR1);
+            printf("1");
+        }
         else
+        {
             kill(pid, SIGUSR2);
+            printf("0");
+        }
         binary_pos >>= 1;
+        usleep(200);
     }
 }
 void    send_msg(int pid, char *msg)
 {    
-    printf("PID: %d\n", pid);
+    //printf("PID: %d\n", pid);
     while(*msg)
     {
         convert_binary(pid, *msg);
-        usleep(500);
+        //usleep(500);
         msg++;
     }
 }
