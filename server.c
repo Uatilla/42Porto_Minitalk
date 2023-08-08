@@ -15,8 +15,12 @@
 #include <stdio.h>
 #include <unistd.h>
 
-static void ft_listening_data(int signal)
+/*static void ft_listening_data(int signal)
 {
+    //DONE! 4) The signal is correctly receipt.
+    //5) Now I need to convert the binary into char
+    //6) Put this char into a const char* variable
+    //7) When there is no more signals, add a '\0' at the end of the const variable and print it.
     if (signal == SIGUSR1)
     {
         write(1, "1", 1);
@@ -29,7 +33,26 @@ static void ft_listening_data(int signal)
     }
     else
         write(1, "-", 1);
-    //usleep(500);
+}*/
+
+void	ft_listening_data(int sig)
+{
+    //DONE! 4) The signal is correctly receipt.
+    //5) Now I need to convert the binary into char
+    //6) Put this char into a const char* variable
+    //7) When there is no more signals, add a '\0' at the end of the const variable and print it.
+	static int	bit;
+	static int	i;
+
+	if (sig == SIGUSR1)
+		i |= (0x01 << bit);
+	bit++;
+	if (bit == 8)
+	{
+		printf("%c", i);
+		bit = 0;
+		i = 0;
+	}
 }
 
 
