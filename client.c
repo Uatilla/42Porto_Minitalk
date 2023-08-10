@@ -76,12 +76,12 @@ void	convert_binary(int pid, char i)
 		if ((i & (0x01 << bit)) != 0) //set the value of bit (1) in the position of the bit variable (first iteration will be: 00000001, second iteration 00000010...)
 		{
             kill(pid, SIGUSR1);
-            printf("1");
+            //printf("1");
         }
 		else
         {
 			kill(pid, SIGUSR2);
-            printf("0");
+            //printf("0");
         }
 		usleep(500);
 		bit++;
@@ -93,6 +93,7 @@ void    send_msg(int pid, char *msg)
     //printf("PID: %d\n", pid);
     while(*msg)
     {
+        printf("%c",*msg);
         convert_binary(pid, *msg);
         msg++;
     }
@@ -104,7 +105,7 @@ int main(int argc, char **argv)
     i = 0;
     //DONE! 1) Verify if is there only two arguments (PID and message).
     if (argc != 3)
-        exit(write(1, "Error: Wrong format!", 23)); 
+        exit(write(1, "Error: Wrong format!", 20)); 
     //DONE! 2) Verify if the PID informed is a valid numeric value, before modifying it to int.
     while (argv[1][i]!= '\0')
     {

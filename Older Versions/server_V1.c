@@ -15,8 +15,6 @@
 #include <stdio.h>
 #include <unistd.h>
 
-char *str;
-
 size_t	ft_strlen(const char *s)
 {
 	int	i;
@@ -28,8 +26,6 @@ size_t	ft_strlen(const char *s)
 	}
 	return (i);
 }
-
-
 
 char	*ft_strjoin_mod(char *s1, char *s2)
 {
@@ -61,7 +57,7 @@ char	*ft_strjoin_mod(char *s1, char *s2)
     //DONE! 4) The signal is correctly receipt.
     //5) Now I need to convert the binary into char
     //6) Put this char into a const char* variable
-    //7) When there ischar)i; no more signals, add a '\0' at the end of the const variable and print it.
+    //7) When there is no more signals, add a '\0' at the end of the const variable and print it.
     if (signal == SIGUSR1)
     {
         write(1, "1", 1);
@@ -84,30 +80,17 @@ void	ft_listening_data(int sig)
     //7) When there is no more signals, add a '\0' at the end of the const variable and print it.
 	static int	bit;
 	static int	i;
-    char *c1;
+    static char *str;
 
 	if (sig == SIGUSR1)
 		i |= (0x01 << bit);
 	bit++;
 	if (bit == 8)
 	{
-		//printf("%c", i);
-        c1 = (char *)malloc(sizeof(char) * 2);
-        if (!c1)
-            return ;
-        c1[0] = (char)i;
-        c1[1] = '\0';
-        str = ft_strjoin_mod(str, c1);
-        if (c1[0] == '\n')
-        {
-            printf("%s", str);
-            free(str);
-            str = NULL;
-        }
-            
-        bit = 0;
+		printf("%c", i);
+        //str = ft_strjoin_mod(i, str);
+		bit = 0;
 		i = 0;
-        free(c1);
 	}
 }
 
@@ -125,3 +108,4 @@ int main(void)
         pause();
     }
 }
+
