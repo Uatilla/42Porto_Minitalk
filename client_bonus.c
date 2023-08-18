@@ -10,16 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <signal.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <unistd.h>
-
-int		ft_atoi(const char *nptr);
-
-void	ft_putstr_fd(char *s, int fd);
-
-void	ft_putnbr(unsigned int pid);
+#include "minitalk.h"
 
 void	convert_binary(int pid, char i)
 {

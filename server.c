@@ -10,18 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <signal.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <unistd.h>
+#include "minitalk.h"
 
 char	*g_str;
-
-char	*ft_strjoin_mod(char *s1, char *s2);
-
-void	ft_putstr_fd(char *s, int fd);
-
-void	ft_putnbr(unsigned int pid);
 
 void	ft_listening_data(int sig)
 {
