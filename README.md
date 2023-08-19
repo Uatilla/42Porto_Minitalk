@@ -11,13 +11,15 @@ You just need to download or clone this git repository.
 
 ## How to use it
 
-To use the function in your code, simply include its header:
+To use the program you must do: `make` for the mandatory part.
 
-```C
-#include "mintalk.h"
-```
-and, when compiling your code, add the source files and the required flag:
+Then you can do `.\server` to see the PID number, and `.\client PID "message"` to send the message to the server, then the message must be seen on server.
+The same goes with the bonus, you just need to add `.\server_bonus` and `.\client_bonus`, respectively.
 
+To clean the .o files: `make clean`
+To clean all .o files with the bonus files: `make fclean`
+
+To clean all .o files, and rebuild the Mandatory files .o: `make re`
 
 ### Contributing
 
