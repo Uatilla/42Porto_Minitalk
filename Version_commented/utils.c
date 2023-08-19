@@ -10,10 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <signal.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <unistd.h>
+#include "minitalk.h"
 
 size_t	ft_strlen(const char *s)
 {
@@ -25,6 +22,18 @@ size_t	ft_strlen(const char *s)
 		i++;
 	}
 	return (i);
+}
+
+void	ft_putstr_fd(char *s, int fd)
+{
+	write(fd, s, ft_strlen(s));
+}
+
+void	ft_putnbr(unsigned int pid)
+{
+	if (pid > 9)
+		ft_putnbr(pid / 10);
+	write(1, &"0123456789"[pid % 10], 1);
 }
 
 char	*ft_strjoin_mod(char *s1, char *s2)
