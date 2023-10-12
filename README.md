@@ -23,7 +23,7 @@ To clean all .o files, and rebuild the Mandatory files .o: `make re`
 
 ### Contributing
 
-Contributions to the get_next_line project are welcome! If you have any ideas, improvements, or bug fixes, please submit them as issues or pull requests to this repository. Make sure to follow the contributing guidelines when submitting your changes.
+Contributions to the project are welcome! If you have any ideas, improvements, or bug fixes, please submit them as issues or pull requests to this repository. Make sure to follow the contributing guidelines when submitting your changes.
 
 <div align="center">
   <h1><b>Welcome to my new brave world!</b></h1> 
