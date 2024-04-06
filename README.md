@@ -1,5 +1,5 @@
 # 42Porto_Minitalk
-This project is a function that send a message between processes, using the PID (Process identificator) and the signals SIGUSR1 and SIGUSR2.
+This project is a function that send a message between processes, using the PID (Process identificator) and the signals SIGUSR1 and SIGUSR2 don't forgetting that the synchronization between process is very important in this project.
 For more detailed information, look at the [**subject of this project**](https://github.com/Uatilla/42Porto_Minitalk/blob/main/Minitalk_en.subject.pdf).
 
 [![MasterHead](https://media.tenor.com/-buzIaq-QeoAAAAM/code-coding.gif)](https://www.linkedin.com/in/uatilla/)
